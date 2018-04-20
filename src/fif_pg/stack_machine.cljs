@@ -16,7 +16,6 @@
 
         sm (:result out)
         str-out (:str out)]
-    (println "Output:" str-out)
     (swap! app-state update-in [:console-output] conj {:text str-out})
     (swap! app-state assoc :stack-machine sm)))
 

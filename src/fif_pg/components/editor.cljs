@@ -6,5 +6,5 @@
 (rum/defcs c-editor
   [app-state]
   [:.editor-container
-   "Editor"])
+   [:i "Still Under Development"]])
 

@@ -81,11 +81,12 @@ body {
 }
 
 .console-container {
-    flex-grow: 1.0;
+    width: 38%;
     background-color: #1d1d1d;
     color: #d5d5d5;
     padding: 1em;
     padding-left: 0;
+    overflow: auto;
 }
 
 
@@ -121,7 +122,7 @@ body {
 }
 
 .editor-container {
-    flex-grow: 1.62;
+    width: 62%;
     padding: 1em;
 }
 

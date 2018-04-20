@@ -14,8 +14,8 @@
 
 
 (def stack-machine
-   (-> fif/*default-stack*
-       (stack/set-system-error-handler default-system-error-handler)))
+   (-> fif/*default-stack*))
+       ;;(stack/set-system-error-handler default-system-error-handler)))
 
 
 (def *app-state
@@ -23,7 +23,7 @@
    {:fif-version "0.3.0-SNAPSHOT"
     :stack-machine stack-machine
     :console-input {:text "" :focused? true}
-    :console-output [{:text "Test Value"}]}))
+    :console-output [{:text "Fif Interactive Console"}]}))
 
 
 (rum/defc main []
