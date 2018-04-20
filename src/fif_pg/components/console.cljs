@@ -1,21 +1,30 @@
 (ns fif-pg.components.console
   (:require
    [rum.core :as rum]
-   [fif-pg.stack-machine :refer [eval-input-text!]]))
-
+   [fif-pg.stack-machine :refer [eval-input-text!]]
+   [fif-pg.console :as console]))
 
 (rum/defc output-element
   [elem]
   [:.div.output-element
-   [:pre.output-text (:text elem)]])
+   (condp = (:type elem)
+    "header"
+    [:pre.output-text.console-header (:text elem)]
+    "info"
+    [:pre.output-text.console-info (:text elem)]
+    "stdout"
+    [:pre.output-text.console-stdout (:text elem)]
+    "stderr"
+    [:pre.output-text.console-stderr (:text elem)]
 
+    [:pre.output-text.console-stdout (:text elem)])])
 
 (defn handle-keydown [app-state event]
   (let [key (-> event .-key)
         console-input-text (-> @app-state :console-input :text)]
     (when (and (= key "Enter") (> (count console-input-text) 0))
-      (swap! app-state update-in [:console-output] conj {:text console-input-text})
-      (swap! app-state assoc-in [:console-input :text] "")
+      (console/write-info! app-state console-input-text)
+      (console/clear-input! app-state)
       (eval-input-text! app-state console-input-text))))
 
 

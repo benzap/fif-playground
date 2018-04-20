@@ -4,6 +4,7 @@
    [rum.core :as rum]
    [fif.stack-machine :as stack]
    [fif.stack-machine.error-handling :refer [default-system-error-handler]]
+   [fif-pg.console :as console]
 
    ;; Rum React Components
    [fif-pg.components.console :refer [c-console]]
@@ -23,7 +24,8 @@
    {:fif-version "0.3.0-SNAPSHOT"
     :stack-machine stack-machine
     :console-input {:text "" :focused? true}
-    :console-output [{:text "Fif Interactive Console"}]}))
+    :console-output [{:text "Fif Interactive Console" :type "header"}]
+    :codemirror-instance nil}))
 
 
 (rum/defc main []

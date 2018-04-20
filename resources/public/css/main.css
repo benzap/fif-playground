@@ -29,7 +29,6 @@ Dark Green - #63b132
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
 }
 
 input[type="text"] {
@@ -52,7 +51,7 @@ html {
 body {
     height: 100%;
     width: 100%;
-    background-color: #dfdfdf;
+    font-family: 'Roboto', sans-serif;
 }
 
 
@@ -98,6 +97,14 @@ body {
 
 .output-text {
     font-family: 'Inconsolata', monospace;
+    white-space: -moz-pre-wrap !important;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    white-space: pre-wrap;       /* css-3 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+    white-space: -webkit-pre-wrap; /* Newer versions of Chrome/Safari*/
+    word-break: break-word;
+    white-space: normal;
 }
 
 
@@ -122,8 +129,77 @@ body {
 }
 
 .editor-container {
+    display: flex;
+    flex-direction: column;
     width: 62%;
-    padding: 1em;
 }
 
 
+.editor-menu-bar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    flex-basis: 40px;
+    flex-shrink: 0;
+    padding: 5px;
+    padding-right: 7px;
+    background-color: rgba(88, 129, 216, 0.65);
+    height: 2em;
+}
+
+
+.codemirror-container {
+    display: flex;
+    flex-grow: 1;
+    width: 100%;
+}
+
+.CodeMirror {
+    height: initial;
+    flex-grow: 1;
+    background-color: #dfdfdf;
+    font-family: 'Inconsolata', monospace;
+}
+
+.CodeMirror-gutters {
+    border-left-color: rgba(88, 129, 216, 0.65) !important;
+}
+
+.editor-button:hover {
+    background-color: #63b132;
+}
+
+.editor-button {
+    display: flex;
+    cursor: pointer;
+    color: rgba(255, 255, 255, 0.8);
+    justify-content: center;
+    line-height: 1.5em;
+    min-width: 100px;
+    align-items: center;
+    padding-left: 5px;
+    padding-right: 5px;
+    background-color: #91dc47;
+}
+
+
+.console-header {
+    color: #91dc47;
+    font-weight: bold;
+}
+
+
+.console-info {
+    color: #6d6d7f;
+    font-weight: 500;
+}
+
+
+.console-stdout {
+    color: #fdfdfd;
+}
+
+
+.console-stderr {
+    color: #EC407A;
+}
