@@ -1,4 +1,5 @@
-(ns fif-pg.console)
+(ns fif-pg.console
+  (:require [fif-pg.utils :refer [create-uuid]]))
 
 
 (defn insert-output!
@@ -7,19 +8,19 @@
 
 
 (defn write-header! [app-state text]
-  (insert-output! app-state {:text text :type "header"}))
+  (insert-output! app-state {:text text :type "header" :key (create-uuid)}))
 
 
 (defn write-info! [app-state text]
-  (insert-output! app-state {:text text :type "info"}))
+  (insert-output! app-state {:text text :type "info" :key (create-uuid)}))
 
 
 (defn write-stdout! [app-state text]
-  (insert-output! app-state {:text text :type "stdout"}))
+  (insert-output! app-state {:text text :type "stdout" :key (create-uuid)}))
 
 
 (defn write-stderr! [app-state text]
-  (insert-output! app-state {:text text :type "stderr"}))
+  (insert-output! app-state {:text text :type "stderr" :key (create-uuid)}))
 
 
 (defn clear-input! [app-state]

@@ -2,9 +2,11 @@
   (:require
    [rum.core :as rum]
    [fif-pg.stack-machine :refer [eval-input-text!]]
-   [fif-pg.console :as console]))
+   [fif-pg.console :as console]
+   [fif-pg.utils :refer [create-uuid]]))
 
 (rum/defc output-element
+  < {:key-fn (fn [elem] (str (or (:key elem) (create-uuid))))}
   [elem]
   [:.div.output-element
    (condp = (:type elem)

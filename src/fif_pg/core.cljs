@@ -25,7 +25,8 @@
     :stack-machine stack-machine
     :console-input {:text "" :focused? true}
     :console-output [{:text "Fif Interactive Console" :type "header"}]
-    :codemirror-instance nil}))
+    :codemirror-instance nil
+    :dropdown-open? false}))
 
 
 (rum/defc main []

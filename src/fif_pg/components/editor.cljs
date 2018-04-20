@@ -2,7 +2,9 @@
   (:require
    [rum.core :as rum]
    [fif-pg.stack-machine :refer [eval-input-text!]]
-   [fif-pg.console :as console]))
+   [fif-pg.console :as console]
+
+   [fif-pg.components.dropdown :refer [c-dropdown]]))
 
 
 (def codemirror-config
@@ -44,7 +46,7 @@
   (let [{:keys []} (rum/react app-state)]
     [:.editor-container
      [:.editor-menu-bar
-  
+      (c-dropdown app-state)
       [:div.editor-button {:on-click #(handle-run-script app-state)} "Run Script"]]
      [:.codemirror-container]]))
 
