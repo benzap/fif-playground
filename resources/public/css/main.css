@@ -1,5 +1,11 @@
 /*
 
+Fonts:
+
+font-family: 'Roboto', sans-serif;
+font-family: 'Inconsolata', monospace;
+
+
 Color Palette:
 
 Light Blue - #95b0e7
@@ -9,13 +15,33 @@ Dark Green - #63b132
 
 */
 
+::-moz-selection { /* Code for Firefox */
+    color: #fdfdfd;
+    background: #91dc47;
+}
+
+::selection { /* Code for Firefox */
+    color: #fdfdfd;
+    background: #91dc47;
+}
 
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
 }
 
+input[type="text"] {
+    outline: none;
+    border: none;
+    resize: none;
+    color: #91dc47;
+    font-family: 'Inconsolata', monospace;
+    width: 100%;
+    font-size: 1em;
+    background-color: rgba(0,0,0,0.0);
+}
 
 html {
     height: 100%;
@@ -59,10 +85,44 @@ body {
     background-color: #1d1d1d;
     color: #d5d5d5;
     padding: 1em;
+    padding-left: 0;
 }
 
+
+.output-element {
+    font-family: 'Inconsolata', monospace;
+    padding-bottom: 3px;
+    padding-left: 1em;
+}
+
+.output-text {
+    font-family: 'Inconsolata', monospace;
+}
+
+
+.input-element {
+    display: flex;
+    flex-direction: row;
+    color: #63b132;
+    align-items: center;
+}
+
+.input-text {
+    display: inline-block;
+    font-family: 'Inconsolata', monospace;
+}
+
+.input-prompt {
+    display: inline-block;
+    color: #5881d8;
+    width: 1em;
+    text-align: center;
+    font-family: 'Inconsolata', monospace;
+}
 
 .editor-container {
     flex-grow: 1.62;
     padding: 1em;
 }
+
+

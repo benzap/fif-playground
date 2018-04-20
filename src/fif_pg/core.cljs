@@ -2,6 +2,8 @@
   (:require
    [fif.core :as fif :include-macros true]
    [rum.core :as rum]
+   [fif.stack-machine :as stack]
+   [fif.stack-machine.error-handling :refer [default-system-error-handler]]
 
    ;; Rum React Components
    [fif-pg.components.console :refer [c-console]]
@@ -10,22 +12,18 @@
 
 (enable-console-print!)
 
-(.log js/console "Hello World!")
 
-
-(.log js/console (clj->js (fif/reval 2 2 +)))
-
-
-(println (fif/reval [2 0 do i loop] ? *inc <> map .s))
-
+(def stack-machine
+   (-> fif/*default-stack*
+       (stack/set-system-error-handler default-system-error-handler)))
 
 
 (def *app-state
   (atom
    {:fif-version "0.3.0-SNAPSHOT"
-    :stack-machine fif/*default-stack*
-    :console-input []
-    :console-output []}))
+    :stack-machine stack-machine
+    :console-input {:text "" :focused? true}
+    :console-output [{:text "Test Value"}]}))
 
 
 (rum/defc main []
