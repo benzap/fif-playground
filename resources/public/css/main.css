@@ -1,5 +1,68 @@
+/*
+
+Color Palette:
+
+Light Blue - #95b0e7
+Dark Blue - #5881d8
+Light Green - #91dc47
+Dark Green - #63b132
+
+*/
+
+
 * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+}
+
+
+html {
+    height: 100%;
+    width: 100%;
+}
+
+
+body {
+    height: 100%;
+    width: 100%;
+    background-color: #dfdfdf;
+}
+
+
+#app {
+    height: 100%;
+    width: 100%;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+}
+
+.header-container {
+    width: 100%;
+    background-color: #91dc47;
+    flex-grow 0;
+    padding: 10px;
+}
+
+.split-container {
+    display: flex;
+    flex-grow: 1;
+}
+
+.console-container {
+    flex-grow: 1.0;
+    background-color: #1d1d1d;
+    color: #d5d5d5;
+    padding: 1em;
+}
+
+
+.editor-container {
+    flex-grow: 1.62;
+    padding: 1em;
 }
