@@ -17,10 +17,12 @@
   :cljsbuild {:builds {:dev
                        {:source-paths ["src"]
                         :compiler {:output-dir "resources/public/js/compiled/out"
+                                   :asset-path "js/compiled/out"
                                    :output-to "resources/public/js/compiled/fif-playground.js"
-                                   :optimizations :whitespace
+                                   :optimizations :none
+                                   :main fif-pg.core
                                    :pretty-print true
-                                   :source-map "resources/public/js/compiled/fif-playground.js.map"}}
+                                   :source-map true}}
                        :prod
                        {:source-paths ["src"]
                         :compiler {:output-to "resources/public/js/compiled/fif-playground.min.js"
