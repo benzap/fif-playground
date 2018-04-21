@@ -46,7 +46,9 @@
   (let [{:keys []} (rum/react app-state)]
     [:.editor-container
      [:.editor-menu-bar
-      (c-dropdown app-state)
+      [:.editor-menu-group
+       [:.editor-menu-label "Examples:"]
+       (c-dropdown app-state)]
       [:div.editor-button {:on-click #(handle-run-script app-state)} "Run Script"]]
      [:.codemirror-container]]))
 

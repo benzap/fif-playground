@@ -42,6 +42,22 @@ input[type="text"] {
     background-color: rgba(0,0,0,0.0);
 }
 
+
+select {
+    outline: none;
+    height: 24px;
+    border: none;
+    font-size: 1em;
+    margin: 0;
+    padding: 2px;
+}
+
+
+option {
+    padding: 5px;
+}
+
+
 html {
     height: 100%;
     width: 100%;
@@ -138,13 +154,18 @@ body {
 .editor-menu-bar {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
     flex-basis: 40px;
     flex-shrink: 0;
     padding: 5px;
-    padding-right: 7px;
+    padding-right: 5px;
     background-color: rgba(88, 129, 216, 0.65);
-    height: 2em;
+}
+
+
+.editor-menu-group {
+    display: flex;
+    align-items: center;
 }
 
 
@@ -175,11 +196,13 @@ body {
     color: rgba(255, 255, 255, 0.8);
     justify-content: center;
     line-height: 1.5em;
-    min-width: 100px;
+    width: 100px;
     align-items: center;
     padding-left: 5px;
     padding-right: 5px;
     background-color: #91dc47;
+    margin-right: 2px;
+    margin-left: 5px;
 }
 
 
@@ -202,4 +225,26 @@ body {
 
 .console-stderr {
     color: #EC407A;
+}
+
+.dropdown-menu-container {
+    display: inline-block;
+    position: absolute;
+    z-index: 1;
+    width: 100px;
+    background-color: #dfdfdf;
+}
+
+.editor-dropdown {
+    display: flex;
+    align-items: center;
+    width: 200px;
+    align-items: left;
+    height: 1.6em;
+    line-height: 1.6em;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 4px;
+    margin-right: 5px;
+    margin-left: 5px;
 }

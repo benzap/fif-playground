@@ -5,9 +5,11 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.9.0"]
                  [org.clojure/clojurescript "1.10.238"]
+                 [org.clojure/core.async "0.4.474"]
                  [fif "0.3.0-SNAPSHOT"]
                  [rum "0.11.2"]
-                 [org.roman01la/citrus "3.1.0"]]
+                 [org.roman01la/citrus "3.1.0"]
+                 [cljs-http "0.1.45"]]
 
   :plugins [[lein-cljsbuild "1.1.7"]
             [lein-ancient "0.6.15"]]

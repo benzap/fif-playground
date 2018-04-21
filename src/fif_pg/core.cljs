@@ -1,7 +1,10 @@
 (ns fif-pg.core
+  (:require-macros [cljs.core.async.macros :refer [go]])
   (:require
    [fif.core :as fif :include-macros true]
    [rum.core :as rum]
+   [cljs.core.async :refer [<!]]
+   [cljs-http.client :as http]
    [fif.stack-machine :as stack]
    [fif.stack-machine.error-handling :refer [default-system-error-handler]]
    [fif-pg.console :as console]
@@ -10,6 +13,7 @@
    [fif-pg.components.console :refer [c-console]]
    [fif-pg.components.editor :refer [c-editor]]
    [fif-pg.components.header :refer [c-header]]))
+
 
 (enable-console-print!)
 
@@ -38,3 +42,10 @@
 
 
 (rum/mount (main) (.getElementById js/document "app"))
+
+
+#_(go
+    (let [response (<! (http/get "/examples/query_example.fif"
+                                 {:content-type "text/plain"}))]
+      (prn (:status response))
+      (prn (:body response))))
