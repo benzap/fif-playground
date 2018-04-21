@@ -25,8 +25,13 @@
                                    :main fif-pg.core
                                    :pretty-print true
                                    :source-map true}}
-                       :prod
+                       :min
                        {:source-paths ["src"]
                         :compiler {:output-to "resources/public/js/compiled/fif-playground.min.js"
                                    :optimizations :advanced
+                                   :pretty-print false}}
+                       :prod
+                       {:source-paths ["src"]
+                        :compiler {:output-to "dist/js/compiled/fif-playground.js"
+                                   :optimizations :simple
                                    :pretty-print false}}}})

@@ -1,0 +1,43 @@
+;; Global Variables are defined using the form:
+;; def <name> <value>
+
+;; Note that this cannot be done programmatically so this is incorrect:
+
+;; def x 2 2 + ;; x is equal to 2 here, 2 was pushed onto the stack with the + operator
+
+;; To programmatically set a variable, use `setg` with a variable
+;; pointer (discussed in another example)
+;; ex.
+
+*x 2 2 + setg
+
+x . cr ;; => '(4)
+
+;; Set x to 10
+def x 10
+
+;; Get x
+x
+
+;; Set x to 20 
+*x 20 setg
+
+;;
+;; Locally Scoped Variables
+;;
+
+;; fif has dynamically scoped variables, which are declared with `let`
+
+
+let y true
+
+y ;; => '(true)
+
+;; They can be set programmatically with `setl`
+
+*y false setl
+
+y ;; => '(false)
+
+
+.s
