@@ -44,7 +44,7 @@ endfn
 
 fn get-user-comment-data
    ;; ( username -- user-comment-data )
-   *username <> setl
+   *username <> setl ;; Pull the value from the stack into a local variable
 
    mock-comment-data
      (username is-user?) <> filter

@@ -1,0 +1,33 @@
+;; fif has the main control-structure if-else-then, along with several
+;; loop control structures
+
+;; zero values are considered false
+0 if 1 then ;; => '()
+nil if 1 then ;; => '()
+false if 1 then ;; => '()
+
+;; non-zero values are considered true
+1 if 1 then ;; => '(1)
+-1 if 1 then ;; => '(1)
+true if 1 then ;; => '(1)
+
+;; Anything else is evaluated by passing to `clojure.core/boolean`
+[] if 1 then ;; => '(1)
+
+0 if 1 else 2 then ;; => '(2)
+1 1 - if 1 else 2 then ;; => '(2)
+
+;; if conditions can be nested
+
+fn check-age
+  dup 18 <  if drop "You are underage"      else
+  dup 50 <  if drop "You are the right age" else
+  dup 50 >= if drop "You are too old"       else
+  then then then
+endfn
+
+12 check-age
+24 check-age
+51 check-age ;; => '("You are underage" "You are the right age" "You are too old")
+
+.s

@@ -1,0 +1,30 @@
+;; fif tries to take advantage of it's dynamic nature with the use of
+;; word references.
+
+;; word references are quite simply a way to push defined words onto
+;; the stack without calling them.
+
+
+;; Define the word variable 'x' to 10
+def x 10
+
+x ;; 10 is pushed onto the stack
+
+*x ;; 'x' is pushed onto the stack
+
+**x ;; '*x' is pushed onto the stack
+
+
+********x ;; ....
+
+
+
+;; This sort of functionality becomes really useful for pulling
+;; variables into a function's scope, or for passing functions for
+;; functional operators, which is in the next section.
+
+
+
+.s
+
+

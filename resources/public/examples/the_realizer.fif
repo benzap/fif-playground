@@ -1,0 +1,32 @@
+;; If you haven't noticed, data that is passed into fif as collections
+   is not evaluated.
+
+
+(here is a collection of values) ;; => ((here is a collection of values))
+
+
+;; Sortof like how a lazy sequence needs to be realized, fif has the
+;; realizer, which is defined as '?'
+
+
+(2 0 do i loop) ? ;; => '((0 1 2))
+
+fn gen-animals
+  set! :cat :dog i 1 = if :mouse then !
+endfn
+
+[
+2 0 do
+  {} [
+      [:id i] ?
+      [:animals gen-animals] ?
+     ] ? into
+loop
+] ? 
+
+
+;; This simplifies collection construction even further. There is
+;; still work being done to concoct subsets of this concept.
+
+
+.s

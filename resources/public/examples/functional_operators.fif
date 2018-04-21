@@ -1,0 +1,78 @@
+;; fif tries to make use of functional programming to the best of its
+;; ability. A few parts were ported from clojure into fif. But from
+;; the few functions that were ported, the rest could theoretically be
+;; written in fif.
+
+;;
+;; reduce operator
+;;
+;; <fn ( xs x -- 'xs )> <coll> reduce
+
+*+ [1 2 3 4] reduce ;; => '(10)
+
+;;
+;; map operator
+;;
+;; <fn ( item -- 'item )> <coll> map
+
+
+*inc [1 2 3 4] map ;; => '((2 3 4 5))
+
+
+;;
+;; filter operator
+;;
+;; <fn ( item -- boolean )> <coll> filter
+
+
+*even? [1 2 3 4 5] filter ;; => '((2 4))
+
+
+;;
+;; Lambda Expressions
+;;
+;;
+;; The three base functional operators can also be passed a sequence in
+;; place of a function, and it will be treated as a lambda expression.
+
+
+(2 +) [1 2 3 4] map ;; => '((3 4 5 6))
+
+(:eggs not= if true else false then) [:eggs :ham :green-eggs :eggs] filter
+;; => '((:ham :green-eggs))
+
+
+;;
+;; apply operator
+;;
+
+;; The apply function in clojure pulled arguments from a collection
+;; into functions. Well.. the apply operator in fif pulls values from
+;; a collection into...
+
+
+(1 2 [3 4]) apply ;; => '(1 2 [3 4])
+
+[1 2 [3 4]] apply ;; => '(1 2 [3 4])
+
+#{:eggs :ham} apply ;; => '(:ham :eggs) ;; order may differ!
+
+{:a 1 :b 2} apply ;; => '([:a 1] [:b 2]) ;; order may differ!
+
+
+;; 
+;; Useful tidbits
+;;
+
+;; I've found that the holy grail of operators to pair with the
+;; functional operators is the swap operator, or '<>'. It makes it
+;; trivial to thread together functional expressions.
+
+
+0 5 range
+    *inc <> map
+    *even? <> filter
+    *+ <> reduce ;; => '(6)
+
+
+.s

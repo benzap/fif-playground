@@ -1,0 +1,89 @@
+;; fif includes almost all of the collection operators seen in clojure.
+;; For an update-to-date list, please check out:
+;; https://github.com/benzap/fif/blob/master/src/fif/stdlib/collection_ops.cljc
+
+;; This means that a clojure function with the function structure:
+;; (<name> <arg1> <arg2>)
+
+;;is accessed within fif as:
+;; <arg1> <arg2> <name>
+
+;; Example:
+
+[1 2 3] 4 conj ;; => '([1 2 3 4])
+
+
+;; Here is a list of what is known to be ported from the clojure equivalents
+
+#_(
+assoc-in
+butlast
+concat
+conj
+cons
+contains?
+dedupe
+dissoc
+distinct
+drop-last ;; 2-arity drop-last
+drop-last-n ;; 3-arity drop-last
+empty
+empty?
+find
+first
+flatten
+fnext
+get
+get-in
+idrop ;; inner drop, equivalent to the clojure function 'drop
+interleave ;; 2-arity interleave
+interleave3 ;; 3-arity interleave
+interleave4 ;; 4-arity interleave
+interpose
+into
+keys
+last
+merge
+next
+nnext
+not-empty
+nth
+nthrest
+partition
+partition-all
+partition-all3 ;; 3-arity partition-all
+partition3 ;; 3-arity partition
+partition4 ;; 4-arity partition
+peek
+pop
+rand-nth
+random-sample
+range
+replace
+rest
+reverse
+second
+select-keys
+seq
+set
+shuffle
+sort
+split-at
+take
+take-last
+take-nth
+vec
+)
+
+;;
+;; A few collection operators that are unique to fif are as follows:
+;;
+
+;; pair operator, creates a vector pair
+1 2 pair ;; => '([1 2])
+
+
+;; unpair operator, unpairs a vector pair, and places it on the stack
+[1 2] unpair ;; => 1 2
+
+.s

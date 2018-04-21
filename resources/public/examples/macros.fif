@@ -1,0 +1,23 @@
+;; Macros are still experimental, but the macro definition still
+;; offers some uses.
+
+;; Macros can be constructed with:
+
+;;  macro <name> <body> endmacro
+
+;; they have an additional special form used within the macro:
+
+;; _! <body> !_
+
+;; to perform a sort of 'reach-ahead.' This is probably going to be
+;; removed in favour of using the realizer with apply.
+
+
+;; The collecters are macros:
+
+macro list! _! () <-into! !_ endmacro
+macro map! _! {} <-into! !_ endmacro
+macro vec! _! [] <-into! !_ endmacro
+macro set! _! #{} <-into! !_ endmacro
+
+;; More examples in the future.
