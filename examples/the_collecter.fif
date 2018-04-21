@@ -1,0 +1,56 @@
+;; fif has trouble dynamically creating collections with the same
+;; freedom that clojure has. This is where the collecter (and the
+;; realizer in another example) come in.
+
+
+;; use the form:
+
+;; <coll> <-into! <contents> !
+
+;; to place contents in a collection.
+
+
+(1 2 3) <-into! 4 5 6 ! ;; => '((6 5 4 1 2 3))
+
+[1 2 3] <-into! 4 5 6 ! ;; => '([1 2 3 4 5 6])
+
+{:a 1} <-into! [:a 2] [:b 3] ! ;; => '({:a 2 :b 3})
+
+
+;; Stack operators within the content field are evaluated
+
+[] <-into! 0 4 range apply ! ;; => '([0 1 2 3])
+
+;; You'll probably note that it carries on the same characteristics as the
+;; clojure (into ...) operator
+
+
+[] 0 4 range into ;; => '([0 1 2 3])
+
+
+;;
+;; Shortcuts
+;;
+;; A few shortcuts were added, namely the operator forms:
+;;
+;; set! <body> !
+;; list! <body> !
+;; vec! <body> !
+;; map! <body> !
+;;
+;; This makes creating big and complex data structures a lot easier.
+
+
+#_(
+vec! 2 1 do
+  map!
+    :id i pair
+    :options
+    map!
+      set! :cat :dog i 1 = if :mouse then !
+    ! pair
+  !
+loop !
+) ;; Bug FIXME
+
+.s

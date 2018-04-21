@@ -1,0 +1,28 @@
+;; Functions have the structure
+;; fn <name> <body...> endfn
+
+
+fn square dup * endfn
+
+5 square ;; => (25)
+
+ 
+fn add2 2 + endfn
+
+fn add4 add2 add2 endfn
+
+4 add4 ;; => '(8)
+
+
+;; Recursive functions are allowed, but the fif compiler does not
+;; support tail call recursion.
+
+
+fn factorial
+  dup 1 > if dup dec factorial * then
+endfn
+
+   
+5 factorial
+
+.s

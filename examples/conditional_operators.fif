@@ -1,0 +1,16 @@
+;; Conditional Operators return true and false. They are functionally
+;; equivalent to clojures operators.
+
+5 3 <    ;; => '(false)
+
+5 5 <=   ;; => '(true)
+
+1 0 =    ;; => '(false)
+
+1 0 not= ;; => '(true)
+
+5 2 >    ;; => '(true)
+
+3 1 >=   ;; => '(true)
+
+.s
