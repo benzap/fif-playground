@@ -1,3 +1,9 @@
+console/clear! $clear-stack
+fn print-stack $get-stack reverse println $clear-stack endfn
+
+
+"Functional Operators" console/header!
+
 ;; fif tries to make use of functional programming to the best of its
 ;; ability. A few parts were ported from clojure into fif. But from
 ;; the few functions that were ported, the rest could theoretically be
@@ -8,7 +14,7 @@
 ;;
 ;; <fn ( xs x -- 'xs )> <coll> reduce
 
-*+ [1 2 3 4] reduce ;; => '(10)
+*+ [1 2 3 4] reduce println ;; => '(10)
 
 ;;
 ;; map operator
@@ -16,7 +22,7 @@
 ;; <fn ( item -- 'item )> <coll> map
 
 
-*inc [1 2 3 4] map ;; => '((2 3 4 5))
+*inc [1 2 3 4] map println ;; => '((2 3 4 5))
 
 
 ;;
@@ -25,7 +31,7 @@
 ;; <fn ( item -- boolean )> <coll> filter
 
 
-*even? [1 2 3 4 5] filter ;; => '((2 4))
+*even? [1 2 3 4 5] filter println ;; => '((2 4))
 
 
 ;;
@@ -36,9 +42,9 @@
 ;; place of a function, and it will be treated as a lambda expression.
 
 
-(2 +) [1 2 3 4] map ;; => '((3 4 5 6))
+(2 +) [1 2 3 4] map println ;; => '((3 4 5 6))
 
-(:eggs not= if true else false then) [:eggs :ham :green-eggs :eggs] filter
+(:eggs not= if true else false then) [:eggs :ham :green-eggs :eggs] filter println
 ;; => '((:ham :green-eggs))
 
 
@@ -51,13 +57,13 @@
 ;; a collection into...
 
 
-(1 2 [3 4]) apply ;; => '(1 2 [3 4])
+(1 2 [3 4]) apply print-stack ;; => '(1 2 [3 4])
 
-[1 2 [3 4]] apply ;; => '(1 2 [3 4])
+[1 2 [3 4]] apply print-stack ;; => '(1 2 [3 4])
 
-#{:eggs :ham} apply ;; => '(:ham :eggs) ;; order may differ!
+#{:eggs :ham} apply print-stack ;; => '(:ham :eggs) ;; order may differ!
 
-{:a 1 :b 2} apply ;; => '([:a 1] [:b 2]) ;; order may differ!
+{:a 1 :b 2} apply print-stack ;; => '([:a 1] [:b 2]) ;; order may differ!
 
 
 ;; 
@@ -72,7 +78,5 @@
 0 5 range
     *inc <> map
     *even? <> filter
-    *+ <> reduce ;; => '(6)
-
-
-.s
+    *+ <> reduce
+    print-stack ;; => '(6)

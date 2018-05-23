@@ -1,16 +1,20 @@
+console/clear! $clear-stack
+fn print-stack $get-stack reverse println $clear-stack endfn
+
+
+"Conditional Operators" console/header!
+
 ;; Conditional Operators return true and false. They are functionally
 ;; equivalent to clojures operators.
 
-5 3 <    ;; => '(false)
+5 3 < println   ;; => '(false)
 
-5 5 <=   ;; => '(true)
+5 5 <= println  ;; => '(true)
 
-1 0 =    ;; => '(false)
+1 0 = println   ;; => '(false)
 
-1 0 not= ;; => '(true)
+1 0 not= println ;; => '(true)
 
-5 2 >    ;; => '(true)
+5 2 > println   ;; => '(true)
 
-3 1 >=   ;; => '(true)
-
-.s
+3 1 >= println  ;; => '(true)

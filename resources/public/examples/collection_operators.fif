@@ -1,3 +1,9 @@
+console/clear! $clear-stack
+fn print-stack $get-stack reverse println $clear-stack endfn
+
+
+"Collection Operators" console/header!
+
 ;; fif includes almost all of the collection operators seen in clojure.
 ;; For an update-to-date list, please check out:
 ;; https://github.com/benzap/fif/blob/master/src/fif/stdlib/collection_ops.cljc
@@ -10,7 +16,7 @@
 
 ;; Example:
 
-[1 2 3] 4 conj ;; => '([1 2 3 4])
+[1 2 3] 4 conj println ;; => '([1 2 3 4])
 
 
 ;; Here is a list of what is known to be ported from the clojure equivalents
@@ -80,10 +86,8 @@ vec
 ;;
 
 ;; pair operator, creates a vector pair
-1 2 pair ;; => '([1 2])
+1 2 pair println ;; => '([1 2])
 
 
 ;; unpair operator, unpairs a vector pair, and places it on the stack
-[1 2] unpair ;; => 1 2
-
-.s
+[1 2] unpair print-stack ;; => '(1 2)

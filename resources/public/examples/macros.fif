@@ -1,3 +1,9 @@
+console/clear! $clear-stack
+fn print-stack $get-stack reverse println $clear-stack endfn
+
+
+"Macros" console/header!
+
 ;; Macros are still experimental, but the macro definition still
 ;; offers some uses.
 
