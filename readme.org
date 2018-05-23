@@ -5,6 +5,10 @@
 #+LANGUAGE: en
 #+OPTIONS: H:2 num:t toc:t \n:nil ::t |:t ^:t f:t tex:t
 
-This contains a simple environment for testing out fif scripting.
 
-[[http://github.com/benzap/fif][Fif Github Page]]
+This contains a simple environment for trying out and learning about fif scripting.
+
+- [[http://benzaporzan.me/fif-playground/][Fif Playground Page]]
+
+- [[http://github.com/benzap/fif][Fif Github Page]]
+
