@@ -5,21 +5,23 @@
    [fif-pg.console :as console]
    [fif-pg.utils :refer [create-uuid]]))
 
+
 (rum/defc output-element
   < {:key-fn (fn [elem] (str (or (:key elem) (create-uuid))))}
   [elem]
   [:.div.output-element
    (condp = (:type elem)
     "header"
-    [:pre.output-text.console-header (:text elem)]
+    [:span.output-text.console-header (:text elem)]
     "info"
-    [:pre.output-text.console-info (:text elem)]
+    [:span.output-text.console-info (:text elem)]
     "stdout"
-    [:pre.output-text.console-stdout (:text elem)]
+    [:span.output-text.console-stdout (:text elem)]
     "stderr"
-    [:pre.output-text.console-stderr (:text elem)]
+    [:span.output-text.console-stderr (:text elem)]
 
-    [:pre.output-text.console-stdout (:text elem)])])
+    [:span.output-text.console-stdout (:text elem)])])
+
 
 (defn handle-keydown [app-state event]
   (let [key (-> event .-key)
@@ -30,9 +32,29 @@
       (eval-input-text! app-state console-input-text))))
 
 
+(defn handle-autoscroll []
+  {:did-mount
+   (fn [state]
+     (let [elem-console-container (.querySelector js/document ".console-container")]
+       (.addEventListener
+        elem-console-container "click"
+        (fn [e]
+          (let [elem (.querySelector js/document ".input-element > input")]
+            (.focus elem))))
+       state))
+   :did-update
+   (fn [state]
+     (let [elem-console-container (.querySelector js/document ".console-container")]
+       (aset elem-console-container "scrollTop" (.-MAX_SAFE_INTEGER js/Number))
+       state))})
+
+
+
 (rum/defcs
   c-console
-  < rum/reactive
+  <
+  rum/reactive
+  (handle-autoscroll)
   [state app-state]
   (let [{:keys [console-output
                 console-input]}

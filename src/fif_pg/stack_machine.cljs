@@ -1,8 +1,14 @@
 (ns fif-pg.stack-machine
   (:require-macros [fif-pg.utils :refer [with-out-str-data-map]])
   (:require
+   [clojure.string :as str]
    [fif.core :as fif :include-macros true]
    [fif-pg.state :refer [*app-state]]))
+
+
+(defn split-text-console-output [s]
+  (->> (str/split-lines s)
+       (map (fn [x] {:text (str/replace x #" " "\u00a0")}))))
 
 
 (defn eval-input-text!
@@ -14,6 +20,6 @@
              (fif/eval-string input-text)))
 
         sm (:result out)
-        str-out (:str out)]
-    (swap! app-state update-in [:console-output] conj {:text str-out})
+        console-out (split-text-console-output (:str out))]
+    (swap! app-state update-in [:console-output] #(vec (concat %1 %2)) console-out)
     (swap! app-state assoc :stack-machine sm)))

@@ -1,5 +1,7 @@
 (ns fif-pg.console
-  (:require [fif-pg.utils :refer [create-uuid]]))
+  (:require
+   [clojure.string :as str]
+   [fif-pg.utils :refer [create-uuid]]))
 
 
 (defn insert-output!
@@ -8,19 +10,23 @@
 
 
 (defn write-header! [app-state text]
-  (insert-output! app-state {:text text :type "header" :key (create-uuid)}))
+  (insert-output!
+   app-state {:text (str/replace text #" " "\u00a0") :type "header" :key (create-uuid)}))
 
 
 (defn write-info! [app-state text]
-  (insert-output! app-state {:text text :type "info" :key (create-uuid)}))
+  (insert-output!
+   app-state {:text (str/replace text #" " "\u00a0") :type "info" :key (create-uuid)}))
 
 
 (defn write-stdout! [app-state text]
-  (insert-output! app-state {:text text :type "stdout" :key (create-uuid)}))
+  (insert-output!
+   app-state {:text (str/replace text #" " "\u00a0") :type "stdout" :key (create-uuid)}))
 
 
 (defn write-stderr! [app-state text]
-  (insert-output! app-state {:text text :type "stderr" :key (create-uuid)}))
+  (insert-output!
+   app-state {:text (str/replace text #" " "\u00a0") :type "stderr" :key (create-uuid)}))
 
 
 (defn clear-input! [app-state]

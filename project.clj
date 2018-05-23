@@ -1,4 +1,4 @@
-(defproject fif-playground "0.1.0-SNAPSHOT"
+(defproject fif-playground "0.2.0-SNAPSHOT"
   :description "fif - Online Playground"
   :url "http://github.com/benzap/fif-playground"
   :license {:name "Eclipse Public License"
@@ -6,7 +6,7 @@
   :dependencies [[org.clojure/clojure "1.9.0"]
                  [org.clojure/clojurescript "1.10.238"]
                  [org.clojure/core.async "0.4.474"]
-                 [fif "0.3.0-SNAPSHOT"]
+                 [fif "0.4.0-SNAPSHOT"]
                  [rum "0.11.2"]
                  [org.roman01la/citrus "3.1.0"]
                  [cljs-http "0.1.45"]]
