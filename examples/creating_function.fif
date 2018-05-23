@@ -1,17 +1,23 @@
+console/clear! $clear-stack
+fn print-stack $get-stack reverse println $clear-stack endfn
+
+
+"Defining Functions" console/header!
+
 ;; Functions have the structure
 ;; fn <name> <body...> endfn
 
 
 fn square dup * endfn
 
-5 square ;; => (25)
+5 square println ;; => (25)
 
  
 fn add2 2 + endfn
 
 fn add4 add2 add2 endfn
 
-4 add4 ;; => '(8)
+4 add4 println ;; => '(8)
 
 
 ;; Recursive functions are allowed, but the fif compiler does not
@@ -23,6 +29,4 @@ fn factorial
 endfn
 
    
-5 factorial
-
-.s
+5 factorial println ;; => '(120)

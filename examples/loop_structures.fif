@@ -1,3 +1,9 @@
+console/clear! $clear-stack
+fn print-stack $get-stack reverse println $clear-stack endfn
+
+
+"Loop Structures" console/header!
+
 ;; Fif has several loop structures to choose from. They are directly
 ;; related to Forth.
 
@@ -8,31 +14,29 @@
 
 
 ;; do loops are inclusive
-2 0 do "Hello!" loop ;; => '("Hello!" "Hello!" "Hello!")
+2 0 do "Hello!" loop print-stack ;; => '("Hello!" "Hello!" "Hello!")
 
 ;; do loops also have special index words i, j and k
-2 0 do i loop ;; => '(0 1 2)
+2 0 do i loop print-stack ;; => '(0 1 2)
 
 ;; do loops have a special increment based loop with +loop
-10 0 do i 2 +loop ;; => '(0 2 4 6 8 10)
+10 0 do i 2 +loop print-stack ;; => '(0 2 4 6 8 10)
 
 ;; begin-until performs the action until its clause is true
-begin 1 true until ;; => '(1)
+begin 1 true until print-stack ;; => '(1)
 
 ;; begin 1 false until ;; => '(1 1 1 1 1 ........
 
-0 begin dup inc dup 5 = until ;; => '(0 1 2 3 4 5)
+0 begin dup inc dup 5 = until print-stack ;; => '(0 1 2 3 4 5)
 
 ;; begin-while-repeat performs the action while its while clause is true
 begin false while 1 repeat ;; => '()
 
 ;; begin true while 1 repeat ;; => '(1 1 1 1 1 .......
 
-0 begin dup 5 < while dup inc repeat ;; => '(0 1 2 3 4 5)
+0 begin dup 5 < while dup inc repeat print-stack ;; => '(0 1 2 3 4 5)
 
 ;; You can break out of any loop prematurely using `leave`
 begin true while leave repeat ;; => '() No Infinite Loop!
 
-0 begin true while dup inc dup 5 = if leave then repeat ;; => '(0 1 2 3 4 5)
-
-.s
+0 begin true while dup inc dup 5 = if leave then repeat print-stack ;; => '(0 1 2 3 4 5)
