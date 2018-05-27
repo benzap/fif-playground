@@ -22,10 +22,11 @@
 
 (def *app-state
   (atom
-   {:fif-version "0.3.0-SNAPSHOT"
+   {:fif-version "1.0.0"
     :stack-machine nil
     :console-input {:text "" :focused? true}
-    :console-output [{:text "Fif Interactive Console" :type "header"}]
+    :console-output [{:text "Fif Interactive Console" :type "header"}
+                     {:text "Type 'help' and press enter for a help message."}]
     :codemirror-instance nil
     :dropdown-open? false}))
 

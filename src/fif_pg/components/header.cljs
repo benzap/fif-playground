@@ -6,6 +6,5 @@
 (rum/defcs c-header
   [app-state]
   [:.header-container
-   "fif - 0.4.0-SNAPSHOT"
+   "fif - 1.0.0"
    [:a {:href "http://github.com/benzap/fif"} "Github Page"]])
-

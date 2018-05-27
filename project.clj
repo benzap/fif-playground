@@ -6,7 +6,7 @@
   :dependencies [[org.clojure/clojure "1.9.0"]
                  [org.clojure/clojurescript "1.10.238"]
                  [org.clojure/core.async "0.4.474"]
-                 [fif "0.4.0-SNAPSHOT"]
+                 [fif "1.0.0"]
                  [rum "0.11.2"]
                  [org.roman01la/citrus "3.1.0"]
                  [cljs-http "0.1.45"]]
