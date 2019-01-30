@@ -19,15 +19,12 @@ fn print-stack $get-stack reverse println $clear-stack endfn
 (2 0 do i loop) ? println ;; => '((0 1 2))
 
 fn gen-animals
-  set! :cat :dog i 1 = if :mouse then !
+  [:cat :dog i 1 = if :mouse then] ? set
 endfn
 
 [
 2 0 do
-  {} [
-      [:id i] ?
-      [:animals gen-animals] ?
-     ] ? into
+  {:id i :animals (gen-animals)} ?
 loop
 ] ? println
 

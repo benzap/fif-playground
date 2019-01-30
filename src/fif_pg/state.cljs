@@ -22,7 +22,7 @@
 
 (def *app-state
   (atom
-   {:fif-version "1.0.4"
+   {:fif-version "1.1.0"
     :stack-machine nil
     :console-input {:text "" :focused? true}
     :console-output [{:text "Fif Interactive Console" :type "header"}
