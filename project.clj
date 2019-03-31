@@ -4,18 +4,19 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
   :dependencies [[org.clojure/clojure "1.10.0"]
-                 [org.clojure/clojurescript "1.10.439"]
+                 [org.clojure/clojurescript "1.10.520"]
                  [org.clojure/core.async "0.4.490"]
-                 [fif "1.2.0"]
+                 [fif "1.3.0"]
                  [rum "0.11.3"]
                  [org.roman01la/citrus "3.2.1"]
-                 [cljs-http "0.1.45"]]
+                 [cljs-http "0.1.46"]]
 
   :plugins [[lein-cljsbuild "1.1.7"]
             [lein-ancient "0.6.15"]]
 
-  ;;:hooks [leiningen.cljsbuild]
   :repositories [["clojars" {:sign-releases false}]]
+  :clean-targets ^{:protect false} ["resources/public/js/compiled" "target" "dist/js/compiled"]
+
   :cljsbuild {:builds {:dev
                        {:source-paths ["src"]
                         :compiler {:output-dir "resources/public/js/compiled/out"
